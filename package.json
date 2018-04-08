@@ -1,0 +1,42 @@
+{
+  "name": "Multi-page",
+  "version": "1.0.0",
+  "description": "Multi-page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaossssss/Multi-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chaossssss/Multi-page/issues"
+  },
+  "homepage": "https://github.com/chaossssss/Multi-page#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "express": "^4.16.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "jcy-loader": "^1.0.2",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-middleware": "^3.1.2",
+    "webpack-dev-server": "^3.1.2",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
+    "lodash": "^4.17.5"
+  }
+}
