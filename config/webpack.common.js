@@ -30,6 +30,17 @@ module.exports = {
 	  	use: ['jcy-loader']
   	},
   	{
+  		test: /\.(jpg|png|svg|gif)$/,
+  		use: [{
+  			loader: 'url-loader',
+  			options: {
+  				limit : 8,
+  				name: '/images/[name].[ext]'
+	  			}
+  			}],
+  		include: [resolve('src')]
+  	},
+  	{
   		test: /\.css$/,
   		use: [
   			'style-loader',
@@ -43,19 +54,7 @@ module.exports = {
   			'css-loader',
   			'less-loader'
   		]
-  	},
-  	{
-  		test: /\.(jpg|png|svg|gif)$/,
-  		use: [{
-  			loader: 'url-loader',
-  			options: {
-  				limit : 8,
-  				name: '/images/[name].[ext]'
-  			}
-  		}],
-  		include: [resolve('src')]
-  	}
-  	]
+  	}]
   },
   resolve: {
   	extensions: ['.js','ejs']
