@@ -13,13 +13,14 @@ const entrys = config.pages.reduce((sum,page)=>{
 const HtmlWebpackPlugins = config.pages.map(page=>{
 	return new HtmlWebpackPlugin({
 			title: config.env.mode === '"production"' ? '@Html.Action("SeoModel","PartialView",new { name = "seoIndex", id = 0})' : ('<title>'+page+'</title>'),
-			template: `${config.rootPath}/pages/${page}/${page}.ejs`,
+			template: `${config.rootPath}/pages/${page}.ejs`,
 			filename: config.env.mode === '"production"' ? page+'.cshtml' : page+'.html',
 			inject: 'body',
+			chunks: [page]
 		})
 })
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '.', dir)
 }
 module.exports = {
   entry: entrys,
@@ -27,7 +28,34 @@ module.exports = {
   	rules:[{
 	  	test: /\.ejs$/,
 	  	use: ['jcy-loader']
-  	}]
+  	},
+  	{
+  		test: /\.css$/,
+  		use: [
+  			'style-loader',
+  			'css-loader'
+  		]
+  	},
+  	{
+  		test: /\.less$/,
+  		use: [
+  			'style-loader',
+  			'css-loader',
+  			'less-loader'
+  		]
+  	},
+  	{
+  		test: /\.(jpg|png|svg|gif)$/,
+  		use: [{
+  			loader: 'url-loader',
+  			options: {
+  				limit : 8,
+  				name: '/images/[name].[ext]'
+  			}
+  		}],
+  		include: [resolve('src')]
+  	}
+  	]
   },
   resolve: {
   	extensions: ['.js','ejs']

@@ -1,1 +1,3 @@
-console.log(123);
+import '../common/common.js';
+import '../less/index.less';
+console.log('index');
