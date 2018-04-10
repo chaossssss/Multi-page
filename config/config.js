@@ -1,7 +1,7 @@
 module.exports = {
 	rootPath: './src',
 	pages: [
-		'index','about','join'
+		'index'
 	],
 	env: {
 		// mode:JSON.stringify("production"),

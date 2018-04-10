@@ -25,6 +25,7 @@
     "express": "^4.16.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jcy-loader": "^1.0.2",
     "style-loader": "^0.20.3",
