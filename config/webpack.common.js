@@ -12,10 +12,10 @@ const entrys = config.pages.reduce((sum,page)=>{
 
 const HtmlWebpackPlugins = config.pages.map(page=>{
 	return new HtmlWebpackPlugin({
-			title: config.env.mode === '"production"' ? '@Html.Action("SeoModel","PartialView",new { name = "seoIndex", id = 0})' : ('<title>'+page+'</title>'),
+			title: config.env.mode === '"production"' ? '@Html.Action("SeoModel","PartialView",new { name = "seoIndex", id = 0})' : `<title>${page}</title>`,
 			template: `${config.rootPath}/pages/${page}.ejs`,
 			filename: config.env.mode === '"production"' ? page+'.cshtml' : page+'.html',
-			inject: 'body',
+			inject: false,
 			chunks: [page]
 		})
 })

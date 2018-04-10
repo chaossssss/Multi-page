@@ -28,6 +28,8 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jcy-loader": "^1.0.2",
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",
     "webpack": "^4.5.0",
@@ -37,8 +39,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
-    "less": "^3.0.1",
-    "less-loader": "^4.1.0",
+    "jquery": "^1.9.1",
     "lodash": "^4.17.5"
   }
 }

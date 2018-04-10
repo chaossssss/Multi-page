@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<%= htmlWebpackPlugin.options.title %>
 </head>
 <body>
+
 <div class="num">index</div>
 <img src="/images/banner2.jpg">
 <div class="pic-box"></div>
-
+<% for(var chunk in htmlWebpackPlugin.files.chunks) { %>
+<script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>	
+<% } %>
+<script type="text/javascript">
+	console.log(123)
+</script>
 </body>
 </html>
