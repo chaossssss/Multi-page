@@ -86,12 +86,13 @@ module.exports = {
   	  'window.$': 'jquery',
   	}),
     ...HtmlWebpackPlugins,
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['dist'],{
+    	root: path.resolve(__dirname, '../')
+    }),
   ],
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, 'dist'),
-    // path: 'dist',
+    path: path.resolve(__dirname, '../dist'),
     publicPath:''
   }
 

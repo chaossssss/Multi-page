@@ -4,8 +4,8 @@ module.exports = {
 		'index','about'
 	],
 	env: {
-		// mode:JSON.stringify("production"),
-		mode:JSON.stringify("development"),
+		mode:JSON.stringify("production"),
+		// mode:JSON.stringify("development"),
 	},
 	sourceMap: true
 }
