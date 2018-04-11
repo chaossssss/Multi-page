@@ -12,12 +12,12 @@ const entrys = config.pages.reduce((sum,page)=>{
 
 const HtmlWebpackPlugins = config.pages.map(page=>{
 	return new HtmlWebpackPlugin({
-			title: config.env.mode === '"production"' ? '@Html.Action("SeoModel","PartialView",new { name = "seoIndex", id = 0})' : `<title>${page}</title>`,
-			template: `${config.rootPath}/pages/${page}.ejs`,
-			filename: config.env.mode === '"production"' ? page+'.cshtml' : page+'.html',
-			inject: false,
-			chunks: [page]
-		})
+		title: config.env.mode === '"production"' ? '@Html.Action("SeoModel","PartialView",new { name = "seoIndex", id = 0})' : `<title>${page}</title>`,
+		template: `${config.rootPath}/pages/${page}.ejs`,
+		filename: config.env.mode === '"production"' ? page+'.cshtml' : page+'.html',
+		inject: false,
+		chunks: [page]
+	})
 })
 function resolve (dir) {
   return path.join(__dirname, '.', dir)
@@ -39,6 +39,15 @@ module.exports = {
 	  			}
   			}],
   		include: [resolve('src')]
+  	},
+  	{
+  		test:/\.(woff|woff2|eot|ttf|otf)/,
+  		use: [{
+  			loader: 'file-loader',
+  			options: {
+				name: '/font/[name].[ext]'
+			}
+		}],
   	},
   	{
   		test: /\.css$/,
@@ -64,9 +73,18 @@ module.exports = {
   	}]
   },
   resolve: {
-  	extensions: ['.js','ejs']
+  	extensions: ['.js','ejs'],
+  	alias: {
+  		'C': './'
+  	}
   },
   plugins: [
+  	new webpack.ProvidePlugin({
+  	  $: 'jquery',
+  	  jQuery: 'jquery',
+  	  'window.jQuery': 'jquery',
+  	  'window.$': 'jquery',
+  	}),
     ...HtmlWebpackPlugins,
     new CleanWebpackPlugin(['dist']),
   ],
