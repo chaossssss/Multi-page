@@ -24,6 +24,8 @@ module.exports = merge(common, {
  // },
  plugins: [
    // new ExtractTextPlugin("./css/[name].css"),
-   new UglifyJSPlugin()
+   new UglifyJSPlugin({
+   	
+   })
  ]
 });
