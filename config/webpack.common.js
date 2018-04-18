@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = require('./config.js')
 const webpack = require('webpack');
+// const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const entrys = config.pages.reduce((sum,page)=>{
 	sum[page] = `${config.rootPath}/js/${page}.js`;
@@ -29,16 +30,21 @@ module.exports = {
 	  	test: /\.ejs$/,
 	  	use: ['jcy-loader']
   	},
+    {
+      test: /\.html$/,
+      use: ['html-withimg-loader']
+    },
   	{
   		test: /\.(jpg|png|svg|gif)$/,
   		use: [{
   			loader: 'url-loader',
   			options: {
   				limit : 8,
-  				name: '/images/[name].[ext]'
+  				name: 'images/[name].[ext]',
+          // name: 'images/[name][hash:4].[ext]', //用hash命名
 	  			}
   			}],
-  		include: [resolve('src')]
+  		// include: [resolve('src')]
   	},
   	{
   		test:/\.(woff|woff2|eot|ttf|otf)/,
@@ -48,21 +54,6 @@ module.exports = {
 				name: '/font/[name].[ext]'
 			}
 		}],
-  	},
-  	{
-  		test: /\.css$/,
-  		use: [
-  			'style-loader',
-  			'css-loader'
-  		]
-  	},
-  	{
-  		test: /\.less$/,
-  		use: [
-  			'style-loader',
-  			'css-loader',
-  			'less-loader'
-  		]
   	},
   	{
   		test: require.resolve('jquery'),
@@ -86,14 +77,9 @@ module.exports = {
   	  'window.$': 'jquery',
   	}),
     ...HtmlWebpackPlugins,
+    // new DashboardPlugin(),
     new CleanWebpackPlugin(['dist'],{
     	root: path.resolve(__dirname, '../')
     }),
   ],
-  output: {
-    filename: 'js/[name].js',
-    path: path.resolve(__dirname, '../dist'),
-    publicPath:''
-  }
-
 };
