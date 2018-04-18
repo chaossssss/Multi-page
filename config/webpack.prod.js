@@ -9,15 +9,15 @@ module.exports = merge(common, {
         rules: [{
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                use: "css-loader",
+                fallback: 'style-loader',
+                use: ['css-loader', 'postcss-loader'],
             })
         },
         {
             test: /\.less$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
-                use: ['css-loader', 'less-loader'],
+                use: ['css-loader', 'less-loader', 'postcss-loader'],
             })
         }]
     },
