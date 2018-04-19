@@ -38,9 +38,11 @@ module.exports = {
   		test: /\.(jpg|png|svg|gif)$/,
   		use: [{
   			loader: 'url-loader',
+        loader: 'file-loader',
   			options: {
   				limit : 8,
   				name: 'images/[name].[ext]',
+          // publicPath: '/dist',
           // name: 'images/[name][hash:4].[ext]', //用hash命名
 	  			}
   			}],
@@ -51,7 +53,8 @@ module.exports = {
   		use: [{
   			loader: 'file-loader',
   			options: {
-				name: '/font/[name].[ext]'
+				name: 'font/[name].[ext]',
+        // publicPath: '../../',
 			}
 		}],
   	},
