@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+		<%= htmlWebpackPlugin.options.title %>
+	</head>
+	<body>
+		<!--页面头部-->
+		<%= process.env.mode === 'production' ? htmlWebpackPlugin.options.header : require('../header/index.ejs')() %>
+		<div class="body">
+			
+		</div>
+		<!--页面尾部-->
+		<%= process.env.mode === 'production' ? htmlWebpackPlugin.options.footer :require('../footer/index.ejs')() %>
+	</body>
+</html>
